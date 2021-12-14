@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Car : MonoBehaviour{
     [SerializeField]
@@ -20,5 +21,11 @@ public class Car : MonoBehaviour{
 
     public void steer(int value) {
         this.turnValue = value;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Obstacle")) {
+            SceneManager.LoadScene("Scene_Menu");
+        }
     }
 }
